@@ -1,0 +1,20 @@
+# Environment / secrets — never commit these
+.env
+.env.*
+*.env
+secrets/
+*.key
+*.pem
+*.crt
+
+# Runtime TEE mount contents (these are provisioned at run time, not stored here)
+tee_input/
+tee_output/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/

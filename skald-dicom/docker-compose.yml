@@ -1,0 +1,12 @@
+# PLACEHOLDER — SKALD-DICOM is not yet ready.
+# Fill in the service name and image once published, then remove this notice.
+# Pin by immutable digest for TEE reproducibility, e.g.
+#   image: ghcr.io/datakaveri/skald-dicom@sha256:<digest>
+
+services:
+  skald-dicom:
+    image: ghcr.io/datakaveri/skald-dicom:<tag>
+    volumes:
+      - /tmp/tee_input/data:/app/data
+      - /tmp/tee_input/config:/app/config
+      - /tmp/tee_output:/app/output

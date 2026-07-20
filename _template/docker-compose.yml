@@ -1,0 +1,17 @@
+# TEMPLATE / PLACEHOLDER
+# ----------------------
+# Copy this directory to <your-app-name>/ and fill in the values below when the
+# application is ready. This is the standard shape every SPIDEr app in this repo
+# follows so the middleware/TEE can consume any of them the same way.
+#
+# Status: PLACEHOLDER — not yet ready.
+
+services:
+  <service-name>:
+    # Pin by immutable digest once the image is published:
+    #   image: ghcr.io/datakaveri/<app>@sha256:<digest>
+    image: ghcr.io/datakaveri/<app>:<tag>
+    volumes:
+      - /tmp/tee_input/data:/app/data
+      - /tmp/tee_input/config:/app/config
+      - /tmp/tee_output:/app/output
