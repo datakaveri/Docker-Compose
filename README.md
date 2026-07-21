@@ -16,7 +16,7 @@ input/output volumes.
 │   └── docker-compose.yml
 ├── skald/                   # SKALD anonymisation workload
 │   └── docker-compose.yml
-├── skald-dicom/             # SKALD-DICOM workload (placeholder, not yet ready)
+├── skald-dicom/             # SKALD-DICOM workload
 │   └── docker-compose.yml
 ├── _template/               # Copy this to add a new application
 │   └── docker-compose.yml
@@ -53,7 +53,7 @@ uniformly:
 | -------------------- | ---------------------- | ---------------------------------------------- | ----------- |
 | Differential Privacy | `differential-privacy` | `ghcr.io/kailash-reddy/differential-privacy:v1`| Active      |
 | SKALD                | `skald`                | `ghcr.io/datakaveri/skald:latest`              | Active      |
-| SKALD-DICOM          | `skald-dicom`          | `ghcr.io/datakaveri/skald-dicom:<tag>`         | Placeholder |
+| SKALD-DICOM          | `skald-dicom`          | `ghcr.io/datakaveri/skald-dicom:v1.0.0`        | Active      |
 
 ---
 
