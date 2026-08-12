@@ -1,0 +1,10 @@
+services:
+  skald-image:
+    # `latest` is retagged in GHCR to whichever version is being rolled out.
+    # Pin by immutable digest when a release needs to be reproducible:
+    #   image: ghcr.io/datakaveri/skald-image@sha256:<digest>
+    image: ghcr.io/datakaveri/skald-image:latest
+    volumes:
+      - /tmp/tee_input/data:/app/data
+      - /tmp/tee_input/config:/app/config
+      - /tmp/tee_output:/app/output
