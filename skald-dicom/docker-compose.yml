@@ -2,7 +2,7 @@ services:
   skald-dicom:
     # Pin by immutable digest once the image is published:
     #   image: ghcr.io/datakaveri/skald-dicom@sha256:<digest>
-    image: ghcr.io/datakaveri/skald-dicom:latest
+    image: ghcr.io/datakaveri/skald-dicom:v1.0.0
     volumes:
       - /tmp/tee_input/data:/app/data
       - /tmp/tee_input/config:/app/config
