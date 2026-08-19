@@ -1,0 +1,9 @@
+services:
+  skald-fta:
+    # Pin by immutable digest once the image is published:
+    #   image: ghcr.io/datakaveri/skald-fta@sha256:<digest>
+    image: ghcr.io/datakaveri/skald-fta:latest
+    volumes:
+      - /tmp/tee_input/data:/app/data
+      - /tmp/tee_input/config:/app/config
+      - /tmp/tee_output:/app/output
