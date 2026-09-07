@@ -3,7 +3,7 @@ services:
     # NOTE: prefer pinning by immutable digest for TEE reproducibility/attestation, e.g.
     #   image: ghcr.io/kailash-reddy/differential-privacy@sha256:<digest>
     # A mutable tag like :v1 can be repushed and breaks the TEE trust model.
-    image: ghcr.io/kailash-reddy/differential-privacy:v1
+    image: ghcr.io/kailash-reddy/differential-privacy:latest
     volumes:
       - /tmp/tee_input/data:/app/data
       - /tmp/tee_input/config:/app/config
