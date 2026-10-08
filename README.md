@@ -54,6 +54,7 @@ uniformly:
 | Differential Privacy | `differential-privacy` | `ghcr.io/kailash-reddy/differential-privacy:v1`| Active      |
 | SKALD                | `skald`                | `ghcr.io/datakaveri/skald:latest`              | Active      |
 | SKALD-DICOM          | `skald-dicom`          | `ghcr.io/datakaveri/skald-dicom:v1.0.0`        | Active      |
+| SKALD-Image          | `skald-image`          | `ghcr.io/datakaveri/skald-image:latest`        | Active      |
 
 ---
 
