@@ -1,6 +1,8 @@
 services:
   skald-image:
-    # `latest` is retagged in GHCR to whichever version is being rolled out.
+    # `latest` moves automatically: merging a version bump in
+    # datakaveri/Image-deidentification publishes :vX.Y.Z and points :latest at it
+    # once its tests pass. It only ever moves to a newer version.
     # Pin by immutable digest when a release needs to be reproducible:
     #   image: ghcr.io/datakaveri/skald-image@sha256:<digest>
     image: ghcr.io/datakaveri/skald-image:latest
