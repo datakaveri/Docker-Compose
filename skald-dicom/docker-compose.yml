@@ -3,6 +3,11 @@ services:
     # Pin by immutable digest once the image is published:
     #   image: ghcr.io/datakaveri/skald-dicom@sha256:<digest>
     image: ghcr.io/datakaveri/skald-dicom:latest
+    # The image runs as uid 65532 by default. P3DX-SE-manager stages the input
+    # root-owned with mode 0600 and creates /tmp/tee_output as root, so the
+    # container must run as root to read the input and write the output.
+    # Images up to v1.3 already ran as root, so this changes nothing for them.
+    user: "0:0"
     volumes:
       - /tmp/tee_input/data:/app/data
       - /tmp/tee_input/config:/app/config
