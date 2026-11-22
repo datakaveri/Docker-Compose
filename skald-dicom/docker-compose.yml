@@ -1,8 +1,11 @@
 services:
   skald-dicom:
-    # Pin by immutable digest once the image is published:
-    #   image: ghcr.io/datakaveri/skald-dicom@sha256:<digest>
-    image: ghcr.io/datakaveri/skald-dicom:latest
+    # 2026-11-23: pinned to 2.0.0-ner.1 = v2.0.0 (e1e70788, the image :latest
+    # pointed at) plus the shared-NER change (DICOM-deidentifier feat/shared-ner
+    # df40f3b). Output for configs that don't use the new settings is identical
+    # to v2.0.0 (tags and pixels compared on a test file). Roll back by setting
+    # this to ghcr.io/datakaveri/skald-dicom@sha256:e1e70788dfd0037e796a8e7120756a757994f155a467e5d98a42aa203a459c6a
+    image: ghcr.io/datakaveri/skald-dicom@sha256:91249ecc778676dade5b58587a8c832b97ab8852215074257a621d1630987f24
     # The image runs as uid 65532 by default. P3DX-SE-manager stages the input
     # root-owned with mode 0600 and creates /tmp/tee_output as root, so the
     # container must run as root to read the input and write the output.
@@ -12,3 +15,9 @@ services:
       - /tmp/tee_input/data:/app/data
       - /tmp/tee_input/config:/app/config
       - /tmp/tee_output:/app/output
+      # 2026-11-23: the enclave manager's Unix socket to the NER TEE
+      # (P3DX-SE-manager lib/ner_local_socket.py). Used only by the
+      # free_text_anonymization tag action and dicom_deidentify.shared_ner;
+      # an enclave without it leaves this directory empty and the container
+      # runs without shared NER.
+      - /tmp/tee_ner:/run/anamika-ner
