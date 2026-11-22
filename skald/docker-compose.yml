@@ -4,6 +4,18 @@ services:
     #   image: ghcr.io/datakaveri/skald@sha256:<digest>
     # A mutable tag like :latest can be repushed and breaks the TEE trust model.
     image: ghcr.io/datakaveri/skald:latest
+    # SKALD 4.x images run as uid 65532 (nonroot); the enclave's host folders
+    # (/tmp/tee_input, /tmp/tee_output) belong to kanonTEE (uid 1000), mode 755.
+    # As 65532 SKALD cannot write ./output/status.json and every job fails; as
+    # root its files land root-owned and the enclave (kanonTEE) cannot clear a
+    # nested/FHIR output subfolder before the next job. So run as kanonTEE.
+    # /app/keys and /app/chunks in the image belong to 65532, hence private
+    # tmpfs mounts owned by 1000. Key material stays inside the container and
+    # is gone when it exits, as the enclave never uploads keys anyway.
+    user: "1000:1000"
+    tmpfs:
+      - /app/keys:uid=1000,gid=1000,mode=0700
+      - /app/chunks:uid=1000,gid=1000,mode=0700
     volumes:
       - /tmp/tee_input/data:/app/data
       - /tmp/tee_input/config:/app/config
